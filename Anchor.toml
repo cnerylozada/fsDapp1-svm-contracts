@@ -7,6 +7,7 @@ skip-lint = false
 
 [programs.localnet]
 default = "7WJEb5obrLSH8GLizbfAVdm9pHP5wDxTUwAthTw7JH68"
+hello_anchor = "4M5JG4Sq3jFMKMTxK7KLRqU3g2fozYLn2LJGCj4ZjSF7"
 
 [provider]
 cluster = "localnet"
