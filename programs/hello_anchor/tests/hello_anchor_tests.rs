@@ -26,7 +26,7 @@ fn initialize_account() {
     let program_bytes = include_bytes!("../../../target/deploy/hello_anchor.so");
     svm.add_program(program_id, program_bytes);
 
-    let new_account = Keypair::new();
+    let new_account_kp = Keypair::new();
 
     let signer = Keypair::new();
     svm.airdrop(&signer.pubkey(), 10_000_000_000).unwrap();
@@ -37,7 +37,7 @@ fn initialize_account() {
     let initialize_account_ix = Instruction {
         program_id,
         accounts: vec![
-            AccountMeta::new(new_account.pubkey(), true),
+            AccountMeta::new(new_account_kp.pubkey(), true),
             AccountMeta::new(signer.pubkey(), true),
             AccountMeta::new_readonly(system_program::ID, false),
         ],
@@ -50,13 +50,13 @@ fn initialize_account() {
     let initialize_account_tx = Transaction::new_signed_with_payer(
         &[initialize_account_ix],
         Some(&signer.pubkey()),
-        &[&signer, &new_account],
+        &[&signer, &new_account_kp],
         svm.latest_blockhash(),
     );
     svm.send_transaction(initialize_account_tx).unwrap();
 
-    let account = svm.get_account(&new_account.pubkey()).unwrap();
-    let new_account = NewAccount::deserialize(&mut &account.data[8..]).unwrap();
+    let new_account_raw = svm.get_account(&new_account_kp.pubkey()).unwrap();
+    let new_account = NewAccount::deserialize(&mut &new_account_raw.data[8..]).unwrap();
 
     assert_eq!(new_account.name, _name);
     assert_eq!(new_account.age, _age);
