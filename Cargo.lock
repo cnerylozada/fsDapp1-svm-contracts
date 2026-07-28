@@ -1363,8 +1363,10 @@ name = "favorites"
 version = "0.1.0"
 dependencies = [
  "anchor-lang",
+ "borsh",
  "litesvm 0.13.0",
  "solana-sdk",
+ "solana-transaction 3.1.0",
 ]
 
 [[package]]
