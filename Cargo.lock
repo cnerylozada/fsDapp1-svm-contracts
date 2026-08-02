@@ -5015,6 +5015,17 @@ dependencies = [
 ]
 
 [[package]]
+name = "solana_crud"
+version = "0.1.0"
+dependencies = [
+ "anchor-lang",
+ "borsh",
+ "litesvm 0.13.0",
+ "solana-sdk",
+ "solana-transaction 3.1.0",
+]
+
+[[package]]
 name = "spki"
 version = "0.7.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"

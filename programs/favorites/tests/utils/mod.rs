@@ -1,3 +1,4 @@
+use anchor_lang::Key;
 use borsh::BorshDeserialize;
 use litesvm::LiteSVM;
 use solana_sdk::{
@@ -25,5 +26,5 @@ pub fn setup_svm() -> (LiteSVM, Pubkey, Keypair) {
 }
 
 pub fn get_favorites_pda(signer: &Pubkey, program_id: &Pubkey) -> (Pubkey, u8) {
-    Pubkey::find_program_address(&[b"favorites", signer.as_ref()], program_id)
+    Pubkey::find_program_address(&[b"favorites", signer.key().as_ref()], program_id)
 }
