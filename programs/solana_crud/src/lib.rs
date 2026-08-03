@@ -19,4 +19,8 @@ pub mod solana_crud {
     pub fn update(_ctx: Context<Update>, _title: String, _message: String) -> Result<()> {
         update::handler(_ctx, _title, _message)
     }
+
+    pub fn delete(_ctx: Context<Delete>, _title: String) -> Result<()> {
+        delete::handler(_ctx, _title)
+    }
 }
