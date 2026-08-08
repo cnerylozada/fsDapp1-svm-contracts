@@ -10,6 +10,7 @@ default = "7WJEb5obrLSH8GLizbfAVdm9pHP5wDxTUwAthTw7JH68"
 favorites = "3V15teoWR8bvuTrDdBSWVfVAzkrPfYjVRND52NSEvzBL"
 hello_anchor = "4M5JG4Sq3jFMKMTxK7KLRqU3g2fozYLn2LJGCj4ZjSF7"
 solana_crud = "5Zy3JjtfHLug3EXWWST4vaCdsG2JYhvbug8r5Xk6RCGt"
+voting = "5RoyCHwwWp1o2i7bu82tCPfdCmekgv5XrANupP7o8AGN"
 
 [provider]
 cluster = "localnet"
