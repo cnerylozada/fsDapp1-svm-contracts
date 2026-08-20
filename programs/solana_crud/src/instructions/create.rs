@@ -36,12 +36,12 @@ pub fn handler(_ctx: Context<Create>, _title: String, _message: String) -> Resul
         return Err(MessageAccountError::MesageTooLong.into());
     }
 
-    let message_account = &mut _ctx.accounts.message_account;
-
-    message_account.user = _ctx.accounts.signer.key();
-    message_account.title = _title;
-    message_account.message = _message;
-    message_account.bump = _ctx.bumps.message_account;
+    *_ctx.accounts.message_account = MessageAccount {
+        user: _ctx.accounts.signer.key(),
+        title: _title,
+        message: _message,
+        bump: _ctx.bumps.message_account,
+    };
 
     Ok(())
 }
