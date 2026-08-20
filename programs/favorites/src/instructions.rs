@@ -1,5 +1,5 @@
 use crate::models::Favorites;
-use anchor_lang::prelude::*;
+use anchor_lang::{prelude::*, system_program};
 
 const ACCOUNT_DISCRIMINATOR: usize = 8;
 
@@ -27,5 +27,13 @@ pub fn set_favorites(
     new_account.number = _number;
     new_account.color = _color;
     new_account.hobbies = _hobbies;
+
+    let cpi_accounts = system_program::Transfer {
+        from: _ctx.accounts.signer.to_account_info(),
+        to: _ctx.accounts.favorites.to_account_info(),
+    };
+    let cpi_ctx = CpiContext::new(system_program::ID, cpi_accounts);
+    system_program::transfer(cpi_ctx, 1_000_000_000)?;
+
     Ok(())
 }

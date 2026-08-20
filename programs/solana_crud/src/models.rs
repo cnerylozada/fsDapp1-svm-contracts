@@ -13,3 +13,9 @@ pub struct MessageAccount {
 
     pub bump: u8,
 }
+
+impl MessageAccount {
+    pub fn set_message(&mut self, _message: String) {
+        self.message = _message;
+    }
+}

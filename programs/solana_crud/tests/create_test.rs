@@ -19,6 +19,8 @@ fn create_test() {
     assert_eq!(create_tx_result.is_ok(), true);
 
     let message_account_raw = svm.get_account(&message_account_pda).unwrap();
+    assert_eq!(message_account_raw.owner, solana_crud::ID);
+
     let message_account = MessageAccount::deserialize(&mut &message_account_raw.data[8..]).unwrap();
 
     assert_eq!(message_account.user.key(), signer.pubkey());

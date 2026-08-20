@@ -49,6 +49,9 @@ fn set_favorites() {
     let favorites_account_raw = svm.get_account(&favorites_pda).unwrap();
     let favorites_account = Favorites::deserialize(&mut &favorites_account_raw.data[8..]).unwrap();
 
+    let favorites_pda_balance = svm.get_balance(&favorites_pda).unwrap_or(0);
+    assert!(favorites_pda_balance >= 1_000_000_000);
+
     assert_eq!(favorites_account.number, inputs.number);
     assert_eq!(favorites_account.color, inputs.color);
 }

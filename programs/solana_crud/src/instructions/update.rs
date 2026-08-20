@@ -26,7 +26,7 @@ pub fn handler(_ctx: Context<Update>, _title: String, _message: String) -> Resul
     }
 
     let message_account = &mut _ctx.accounts.message_account;
-    message_account.message = _message;
+    message_account.set_message(_message);
 
     Ok(())
 }

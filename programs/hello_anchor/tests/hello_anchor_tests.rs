@@ -26,13 +26,13 @@ fn initialize_account() {
     let program_bytes = include_bytes!("../../../target/deploy/hello_anchor.so");
     svm.add_program(program_id, program_bytes);
 
-    let new_account_kp = Keypair::new();
-
     let signer = Keypair::new();
     svm.airdrop(&signer.pubkey(), 10_000_000_000).unwrap();
 
     let _name = String::from("cristh");
     let _age = 33;
+
+    let new_account_kp = Keypair::new();
 
     let initialize_account_ix = Instruction {
         program_id,
