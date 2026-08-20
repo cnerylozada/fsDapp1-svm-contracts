@@ -1,4 +1,3 @@
-use crate::constants::MESSAGE_ACCOUNT_TAG;
 use crate::errors::MessageAccountError;
 use crate::models::MessageAccount;
 use anchor_lang::prelude::*;
@@ -7,7 +6,7 @@ use anchor_lang::prelude::*;
 #[instruction(_title: String)]
 pub struct Update<'info> {
     #[account(
-        seeds = [MESSAGE_ACCOUNT_TAG, signer.key().as_ref(), _title.as_bytes()],
+        seeds = [MessageAccount::MESSAGE_ACCOUNT_TAG, signer.key().as_ref(), _title.as_bytes()],
         bump = message_account.bump,
         mut
     )]

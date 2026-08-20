@@ -1,4 +1,4 @@
-use crate::constants::{ACCOUNT_DISCRIMINATOR, MESSAGE_ACCOUNT_TAG};
+use crate::constants::ACCOUNT_DISCRIMINATOR;
 use crate::errors::MessageAccountError;
 use crate::models::MessageAccount;
 use anchor_lang::prelude::*;
@@ -10,7 +10,7 @@ pub struct Create<'info> {
         init,
         space = ACCOUNT_DISCRIMINATOR + MessageAccount::INIT_SPACE,
         payer = signer,
-        seeds = [MESSAGE_ACCOUNT_TAG, signer.key().as_ref(), _title.as_bytes()],
+        seeds = [MessageAccount::MESSAGE_ACCOUNT_TAG, signer.key().as_ref(), _title.as_bytes()],
         bump
     )]
     message_account: Account<'info, MessageAccount>,

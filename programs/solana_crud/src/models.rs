@@ -15,6 +15,8 @@ pub struct MessageAccount {
 }
 
 impl MessageAccount {
+    pub const MESSAGE_ACCOUNT_TAG: &[u8; 15] = b"message_account";
+
     pub fn set_message(&mut self, _message: String) {
         self.message = _message;
     }
